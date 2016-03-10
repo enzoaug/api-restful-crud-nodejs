@@ -29,7 +29,7 @@ var router = express.Router(); // pega a instância da Router do express
 
 // middleware a ser usado para todas as requisições
 router.use(function (req, res, next) {
-    // do logging
+    // cria um log
     console.log("Alguma coisa está acontecendo...");
     next(); // certifica que vamos para as próximas rotas e não paremos aqui
 });
@@ -87,6 +87,7 @@ router.route("/bears/:bear_id").get(function (req, res) { // pega o urso com o i
 
 // modifica o urso com seu id (acessando no PUT http://localhost:8080/api/bears/:bear_id)
 .put(function (req, res) {
+    // usa o Model Bear para encontrar o id dp urso passado no parâmetro 3 da URL
     Bear.findById(req.params.bear_id, function (err, bear) {
         if (err)
             res.send(err);
@@ -105,6 +106,7 @@ router.route("/bears/:bear_id").get(function (req, res) { // pega o urso com o i
     });
 })
 
+// deleta o urso com o id passado no parâmetro 3 da url (acessando no DELETE http://localhost:8080/api/bears/:bear_id)
 .delete(function (req, res) {
     Bear.remove({_id: req.params.bear_id}, function (err, bear) {
         if (err)
