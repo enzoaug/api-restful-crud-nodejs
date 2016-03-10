@@ -87,7 +87,7 @@ router.route("/bears/:bear_id").get(function (req, res) { // pega o urso com o i
 
 // modifica o urso com seu id (acessando no PUT http://localhost:8080/api/bears/:bear_id)
 .put(function (req, res) {
-    // usa o Model Bear para encontrar o id dp urso passado no parâmetro 3 da URL
+    // usa o Model Bear para encontrar o id do urso passado no parâmetro 3 da URL
     Bear.findById(req.params.bear_id, function (err, bear) {
         if (err)
             res.send(err);
